@@ -25,6 +25,7 @@ function setup() {
 
   angleMode(DEGREES);
 
+  // Set text color, size, and alignment
   fill(255);
   textSize(20);
   textAlign(CENTER, CENTER);
@@ -78,12 +79,12 @@ function draw() {
   background(0);
   static_lines();
   translate(width / 2, height / 2);
-  rotate(frameCount / 20 * rotation_speed);
+  rotate(duration * rotation_speed);
   draw_roulette();
-  if (rotation_speed >= 0) {
-    rotation_speed -= 1
+  if (duration >= 0) {
+    duration -= 1
   } else {
-    return get_map_name();
+    get_map_name();
   }
 }
 
@@ -97,7 +98,8 @@ function static_lines() {
 }
 
 function mousePressed() { // Spin the wheel. Random rotation does not work so far.
-  rotation_speed = floor(random(0, 360));
+  rotation_speed = floor(random(0, 500));
+  duration = floor(random(1, 25))
 }
 function get_map_name() { // Find hue from the RGB value returned by get
   translate(0, 0);
